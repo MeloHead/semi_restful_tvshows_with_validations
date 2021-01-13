@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Shows</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1>All Shows</h1>
+    <table class="table-info">
+        <tr>
+            <th>id</th>
+            <th>Title</th>
+            <th>Network</th>
+            <th>Release Date</th>
+            <th>Actions</th>
+            {{show_id}}
+        </tr>
+        {%for show in show_all%}
+        <tr>
+            <td>{{show.id}}</td>
+            <td>{{show.title}}</td>
+            <td>{{show.network}}</td>
+            <td>{{show.release_date}}</td>
+            <td>{{show.description}}</td>
+            <td><a href="/shows/{{show.id}}">Show</a> |
+                <a href="/shows/{{show.id}}/edit">Edit</a> |
+                <a href="/shows/{{show.id}}/delete">Delete</a> </td>
+        </tr>
+        {%endfor%}
+    </table>
+    <h4><a href="/shows/new">Add a New Show</a></h4>
+</body>
+</html>

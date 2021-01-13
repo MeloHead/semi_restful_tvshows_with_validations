@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semi_Restful_TV_Shows_app</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+
+
+<body>
+    <form class="row g-3" action="/shows/{{this_show.id}}/update" method="POST">
+      {%csrf_token%}
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Title</label>
+          <input type="text" class="form-control" id="inputEmail4" name='show_title' value = '{{this_show.title}}'>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Network</label>
+          <input type="text" class="form-control" id="inputPassword4" name='show_network'value = '{{this_show.network}}'>
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Release Date</label>
+          <input type="date" class="form-control" id="inputAddress" name='show_release_date' value = '{{this_show.release_date|slugify}}'>
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Description</label>
+          <textarea type="text" class="form-control" id="inputAddress2" name='show_description'>{{this_show.description}} </textarea>
+        
+          <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+      <a href="/shows">Go To Show</a>
+      <div>
+        {% if messages %}
+        <ul class= "messages">
+          {% for message in messages %}
+            <li> {{message}}</li>
+              {%endfor%}
+            </ul>
+          {% endif %}
+      </div>
+
+
+</body>
+</html>
